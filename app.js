@@ -69,15 +69,74 @@ console.log(schoolbook1.toString());
 console.log(schoolbook1.getUpperTitle());
 
 
-const libraryCollection = [book2, book3, schoolbook1, magazine1];     //questo array non contiene elementi di tipo diverso, in verità. 
-                                                                      //Perché hanno tutti un parente comune (Publication). Quindi è come se JS li leggesse tutti come delle publication. 
-                                                                      //questa si chiama POLIMORFIA
-
-
-for (const pub of libraryCollection) {
-    console.log(pub.toString());
-}                                                                
+//const libraryCollection = [book2, book3, schoolbook1, magazine1];     //questo array non contiene elementi di tipo diverso, in verità. 
+//                                                                      //Perché hanno tutti un parente comune (Publication). Quindi è come se JS li leggesse tutti come delle publication. 
+//                                                                      //questa si chiama POLIMORFIA
+//
+//
+//for (const pub of libraryCollection) {
+//    console.log(pub.toString());
+//}                                                                
 
 //quando faccio il toString, ognuno fa il suo. Anche se prima erano tendenzialmente tutte publications
 
 //mettiamo di voler cambiare le date e non gestirle più come delle stringhe, bensì come dei numeri. Siccome Publication li determina tutti, posso cambiare solo lui e a cascata cambia tutto
+
+const library1 = new Library([book2, book3, magazine1, schoolbook1]);
+
+library1.deletePublication(3);
+
+const book4 = new Book('Se questo è un uomo', 'Primo Levi', '12/05/1998', 'Adelphi');
+
+library1.addPublication(book4);
+
+console.log(library1);
+
+const gui = new GUI();
+
+gui.start();
+
+
+
+//JSON------------------------------------------------------------------------------------------------------------------
+//Javascript Object Notation
+
+// const student1 = {
+
+//     name: 'Bryan',
+//     yob: '1994',
+//     isMarried: false
+
+// }
+
+// console.log(student1);
+
+// const student1JSON = JSON.stringify(student1);
+
+// console.log(student1JSON);
+
+// const stringArray = ['qui', 'quo', 'qua'];
+
+// const stringArrayJSON = JSON.stringify(stringArray);
+
+// console.log(stringArrayJSON);
+
+
+// const student2 = {
+
+//     name: 'Francesca',
+//     yob: '1989',
+//     isMarried: false
+// }
+
+// const studentArray = [student1, student2];
+
+// const studentArrayJSON = JSON.stringify(studentArray);
+
+// console.log(studentArrayJSON);
+
+const jsonString = '[{"name":"Bryan","yob":"1994","isMarried":false},{"name":"Francesca","yob":"1989","isMarried":false}]';
+
+const studentArray = JSON.parse(jsonString);     //processo inverso di stringify = parse
+
+console.log(studentArray);
